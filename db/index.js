@@ -1,9 +1,11 @@
+require("dotenv").config()
+
 const mongoose = require("mongoose");
 
 const MONGO_URI = process.env.MONGODB_URI || "mongodb://localhost/express-basic-auth";
 
 mongoose
-  .connect(`mongodb+srv://${process.env.MG_USERNAME}:${process.env.MG_PWD}@cluster0.ftety.mongodb.net/class-user?retryWrites=true&w=majority`, {
+  .connect(`mongodb+srv://${process.env.MG_USERNAME}:${process.env.MG_PWD}@cluster0.tz3zj.mongodb.net/users?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 
