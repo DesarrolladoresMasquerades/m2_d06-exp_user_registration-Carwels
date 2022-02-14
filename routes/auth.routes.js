@@ -17,6 +17,7 @@ router.route('/signup', )
 	//Check the form is NOT empty
 	if(!username || !password) {
 		res.render("signup", {errorMessage: "All fields are required"});
+		return
 	}
 //looking in DB if user exists
 	User.findOne({ username })
