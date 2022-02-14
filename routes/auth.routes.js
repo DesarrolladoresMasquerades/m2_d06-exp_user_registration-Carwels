@@ -22,7 +22,8 @@ router.route('/signup', )
 	User.findOne({ username })
 	.then(user => {
 	//kill switch, if the user exists then it kills the function
-		if(user){res.render("signup", {errorMessage: "User already taken"})}
+		if(user && user.username)
+		{res.render("signup", {errorMessage: "User already taken"})}
 
 //here we use bcrypt
 		const salt = bcrypt.genSaltSync(saltRounds)
@@ -30,6 +31,7 @@ router.route('/signup', )
 		const hashedPwd = bcrypt.hashSync(password, salt)
 		//*1- Then here would be User.create({username, password) In this way would be a cleaner code
 		User.create({username, password: hashedPwd})
+		.then( () => res.redirect("/index"))
 	})
 })
 
